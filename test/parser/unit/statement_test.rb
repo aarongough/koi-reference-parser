@@ -2,7 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'test_hel
 
 class StatementTest < Test::Unit::TestCase
 
-  include MinKoi
+  include KoiReferenceParser
 
   test "should parse statments on separate lines as separate" do
     tree = Parser.parse("test = 1\ntest = 1")

@@ -2,7 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'test_hel
 
 class AssignmentTest < Test::Unit::TestCase
 
-  include MinKoi
+  include KoiReferenceParser
 
   test "assignment of integer" do
     tree = Parser.parse('test = 1')

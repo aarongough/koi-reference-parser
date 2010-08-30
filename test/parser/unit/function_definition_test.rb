@@ -2,7 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'test_hel
 
 class FunctionDefinitionTest < Test::Unit::TestCase
 
-  include MinKoi
+  include KoiReferenceParser
 
   test "should parse function definition including it's statements" do
     tree = Parser.parse("test = function(args)\n  teest1 = 1\n  test2 = 2\nend")

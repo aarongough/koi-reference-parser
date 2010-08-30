@@ -1,4 +1,4 @@
-module MinKoi
+module KoiReferenceParser
     
     class Block < Treetop::Runtime::SyntaxNode
     end

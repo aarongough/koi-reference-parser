@@ -1,4 +1,4 @@
-grammar MinKoi
+grammar KoiReferenceParser
 
   rule block
     statement+ <Block>

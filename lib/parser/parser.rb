@@ -1,8 +1,8 @@
 class Parser
 
   require 'treetop'
-  Treetop.load(File.expand_path(File.join(File.dirname(__FILE__), 'min-koi.treetop')))
-  @@parser = MinKoiParser.new
+  Treetop.load(File.expand_path(File.join(File.dirname(__FILE__), 'koi-reference-parser.treetop')))
+  @@parser = KoiReferenceParserParser.new
   
   def self.parse(data)
     tree = @@parser.parse(data)
@@ -36,7 +36,7 @@ class Parser
     
     def self.clean_whitespace(root_node)
       return if(root_node.elements.nil?)
-      root_node.elements.delete_if{|node| node.class.name == "MinKoi::Whitespace" }
+      root_node.elements.delete_if{|node| node.class.name == "KoiReferenceParser::Whitespace" }
       root_node.elements.each {|node| self.clean_whitespace(node) }
     end
 

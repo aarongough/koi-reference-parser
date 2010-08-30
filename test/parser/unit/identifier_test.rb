@@ -2,7 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'test_hel
 
 class FunctionCallTest < Test::Unit::TestCase
 
-  include MinKoi
+  include KoiReferenceParser
 
   test "should parse all lowercase identifier" do
     tree = Parser.parse('test = "test"')

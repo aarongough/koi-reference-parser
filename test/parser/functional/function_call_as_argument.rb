@@ -2,7 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'test_hel
 
 class FunctionCallAsArgumentTest < Test::Unit::TestCase
 
-  include MinKoi
+  include KoiReferenceParser
   
   test "should parse statement with function call as argument" do
     assert_nothing_raised do

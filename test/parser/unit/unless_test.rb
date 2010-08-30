@@ -2,7 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'test_hel
 
 class UnlessTest < Test::Unit::TestCase
 
-  include MinKoi
+  include KoiReferenceParser
 
   test "should parse unless statement" do
     tree = Parser.parse("unless(1 == 1)\n test = 1\nend")
