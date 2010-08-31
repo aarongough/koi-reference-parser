@@ -21,6 +21,7 @@ And turns it into an {Abstract Syntax Tree (AST)}[http://en.wikipedia.org/wiki/A
             <AdditionOperator "+">
             <IntegerLiteral "2">
             
+The AST is also available in a far more portable format based on nested hashes by calling the to_hash method on the root AST node.
 
 === Installation
 
@@ -36,6 +37,9 @@ This parser is normally installed as part of Koi's default toolchain. However if
   include KoiReferenceParser
   
   ast = Parser.parse( program_text )
+  
+  # Get the AST as a portable nested hash
+  ast_hash = ast.to_hash
 
 === Author & Credits
 
