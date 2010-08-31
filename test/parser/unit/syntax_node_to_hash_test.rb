@@ -13,7 +13,7 @@ class SyntaxNodeToHashTest < Test::Unit::TestCase
       :elements => nil,
       :offset => 0,
       :name => "Identifier",
-      :text => "test"
+      :text_value => "test"
     }, hash )
   end
   
@@ -28,7 +28,7 @@ class SyntaxNodeToHashTest < Test::Unit::TestCase
       :elements => nil,
       :offset => 0,
       :name => "Assignment",
-      :text => "test = 1"
+      :text_value => "test = 1"
     }
     built_hash[:elements] = [
       {
@@ -36,7 +36,7 @@ class SyntaxNodeToHashTest < Test::Unit::TestCase
       :elements => nil,
       :offset => 0,
       :name => "Identifier",
-      :text => "test"
+      :text_value => "test"
       }
     ]
     assert_equal( built_hash, hash )

@@ -6,7 +6,7 @@ module KoiReferenceParser
       hash = {}
       hash[:parent] = parent
       hash[:offset] = self.interval.first
-      hash[:text] = self.text_value
+      hash[:text_value] = self.text_value
       hash[:name] = self.class.name.split("::").last
       unless( self.elements.nil? )
         hash[:elements] = self.elements.map {|element| element.to_hash(hash) }
