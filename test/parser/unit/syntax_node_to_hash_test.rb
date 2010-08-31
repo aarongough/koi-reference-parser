@@ -9,7 +9,6 @@ class SyntaxNodeToHashTest < Test::Unit::TestCase
     tree = Identifier.new(input, 0...4)
     hash = tree.to_hash
     assert_equal( {
-      :parent => nil,
       :elements => nil,
       :offset => 0,
       :name => "Identifier",
@@ -24,7 +23,6 @@ class SyntaxNodeToHashTest < Test::Unit::TestCase
     ])
     hash = tree.to_hash
     built_hash = {
-      :parent => nil,
       :elements => nil,
       :offset => 0,
       :name => "Assignment",
@@ -32,7 +30,6 @@ class SyntaxNodeToHashTest < Test::Unit::TestCase
     }
     built_hash[:elements] = [
       {
-      :parent => built_hash,
       :elements => nil,
       :offset => 0,
       :name => "Identifier",
