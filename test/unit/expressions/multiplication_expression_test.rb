@@ -6,22 +6,22 @@ class MultiplicationExpressionTest < Test::Unit::TestCase
   
   test "should parse simple multiplication expression with integers" do
     tree = Parser.parse('test = 1 * 1')
-    assert_expression(tree, MultiplicationOperator)
+    assert_expression(tree, MultitiveExpression, MultiplicationOperator)
   end
   
   test "should parse simple multiplication expression with floats" do
     tree = Parser.parse('test = 1.0 * 1.0')
-    assert_expression(tree, MultiplicationOperator)
+    assert_expression(tree, MultitiveExpression, MultiplicationOperator)
   end
   
   test "should parse simple multiplication expression with strings" do
     tree = Parser.parse('test = "1" * "1"')
-    assert_expression(tree, MultiplicationOperator)
+    assert_expression(tree, MultitiveExpression, MultiplicationOperator)
   end
   
   test "should parse simple multiplication expression with identifiers" do
     tree = Parser.parse('test = test1 * test2')
-    assert_expression(tree, MultiplicationOperator)
+    assert_expression(tree, MultitiveExpression, MultiplicationOperator)
   end
   
 end

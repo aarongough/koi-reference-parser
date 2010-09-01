@@ -6,22 +6,22 @@ class DivisionExpressionTest < Test::Unit::TestCase
   
   test "should parse simple division expression with integers" do
     tree = Parser.parse('test = 1 / 1')
-    assert_expression(tree, DivisionOperator)
+    assert_expression(tree, MultitiveExpression, DivisionOperator)
   end
   
   test "should parse simple division expression with floats" do
     tree = Parser.parse('test = 1.0 / 1.0')
-    assert_expression(tree, DivisionOperator)
+    assert_expression(tree, MultitiveExpression, DivisionOperator)
   end
   
   test "should parse simple division expression with strings" do
     tree = Parser.parse('test = "1" / "1"')
-    assert_expression(tree, DivisionOperator)
+    assert_expression(tree, MultitiveExpression, DivisionOperator)
   end
   
   test "should parse simple division expression with identifiers" do
     tree = Parser.parse('test = test1 / test2')
-    assert_expression(tree, DivisionOperator)
+    assert_expression(tree, MultitiveExpression, DivisionOperator)
   end
 
 end
