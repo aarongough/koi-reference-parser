@@ -1,5 +1,8 @@
 grammar KoiReferenceParser
 
+  ##################
+  # Program structure
+
   rule block
     statement+ <Block>
   end
@@ -7,6 +10,9 @@ grammar KoiReferenceParser
   rule statement
     space? ( hash_assignment / assignment / if / unless / function_call ) ';'? space? <Statement>
   end
+  
+  ##################
+  # Literals
   
   rule nil
     "nil" <NilLiteral>
@@ -35,6 +41,24 @@ grammar KoiReferenceParser
   rule identifier
     '$'? [a-zA-Z] [a-zA-Z0-9_]* <Identifier>
   end
+  
+  ##################
+  # Hash literals
+  
+  rule hash
+    '{' key_value_list? '}' <HashLiteral>
+  end
+  
+  rule key_value_list
+    key_value+ <KeyValueList>
+  end
+  
+  rule key_value
+    space? expression space? '=>' space? expression space? ','? <KeyValue>
+  end
+  
+  ##################
+  # Assignment
   
   rule hash_assignment
     identifier hash_accessor_list space? assignment_operator space? ( hash / function_definition / expression ) <HashAssignment>
@@ -70,17 +94,14 @@ grammar KoiReferenceParser
     'function(' space? identifier space? ')' 
       block
     space? 'end' <FunctionDefinition>
-  end
-  
+  end  
+
   ##################
-  # Whitespace
+  # Hash component access
   
-  rule space
-    [\s]+
+  rule hash_access
+    identifier hash_accessor_list <HashAccess>
   end
-  
-  ##################
-  # Hashes
   
   rule hash_accessor_list
     hash_accessor+ <HashAccessorList>
@@ -88,26 +109,6 @@ grammar KoiReferenceParser
   
   rule hash_accessor
     '[' expression ']' <HashAccessor>
-  end
-  
-  rule hash
-    '{' key_value_list? '}' <HashLiteral>
-  end
-  
-  rule key_value_list
-    key_value+ <KeyValueList>
-  end
-  
-  rule key_value
-    space? expression space? '=>' space? expression space? ','? <KeyValue>
-  end
-  
-  rule key
-    space? expression space? <Key>
-  end
-  
-  rule value
-    space? expression space? <Value>
   end
 
   ##################
@@ -117,24 +118,14 @@ grammar KoiReferenceParser
     space? (hash_access / comparative / additive) <Expression>
   end
   
-  rule hash_access
-    identifier hash_accessor_list <HashAccess>
-  end
-  
   rule comparative
-    additive space? (equality_operator / inequality_operator / greater_than_operator / less_than_operator) space? additive <ComparativeExpression>
+    additive space? comparative_operator space? additive <ComparativeExpression>
   end
   
   rule additive
     multitive space? additive_operator space? additive <AdditiveExpression>
     /
     multitive 
-  end
-  
-  rule additive_operator
-    addition_operator 
-    /
-    subtraction_operator 
   end
 
   rule multitive
@@ -143,16 +134,25 @@ grammar KoiReferenceParser
     primary 
   end
   
-  rule multitive_operator
-    multiplication_operator 
-    /
-    division_operator  
-  end  
-  
   rule primary
     function_call / nil / false / true / identifier / float / integer / string 
     /
     '(' space? expression space? ')' <Expression>
+  end
+  
+  ##################
+  # Operator sets
+  
+  rule comparative_operator
+    equality_operator / inequality_operator / greater_than_operator / less_than_operator
+  end
+  
+  rule additive_operator
+    addition_operator / subtraction_operator 
+  end
+  
+  rule multitive_operator
+    multiplication_operator / division_operator  
   end
 
   ##################
@@ -192,6 +192,13 @@ grammar KoiReferenceParser
   
   rule less_than_operator
     '<' <LessThanOperator>
+  end
+  
+  ##################
+  # Whitespace
+  
+  rule space
+    [\s]+
   end
 
 end
