@@ -76,7 +76,7 @@ grammar KoiReferenceParser
   # Whitespace
   
   rule space
-    [\s]+ <Whitespace>
+    [\s]+
   end
   
   ##################

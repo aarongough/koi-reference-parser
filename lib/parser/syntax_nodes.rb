@@ -57,16 +57,7 @@ module KoiReferenceParser
     class KeyValue < Treetop::Runtime::SyntaxNode
     end
     
-    class Key < Treetop::Runtime::SyntaxNode
-    end
-    
-    class Value < Treetop::Runtime::SyntaxNode
-    end
-    
     class Identifier < Treetop::Runtime::SyntaxNode
-    end
-    
-    class Whitespace < Treetop::Runtime::SyntaxNode
     end
     
     class AssignmentOperator < Treetop::Runtime::SyntaxNode
