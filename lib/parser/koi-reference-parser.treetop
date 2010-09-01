@@ -1,3 +1,9 @@
+# This file is a Parsing Expression Grammar (PEG) for the Koi
+# programming language. It is interpreted by the PEG engine Treetop.
+
+# More info on PEGs: http://en.wikipedia.org/wiki/Parsing_expression_grammar
+# More info on Treetop: http://treetop.rubyforge.org/
+
 grammar KoiReferenceParser
 
   ##################
