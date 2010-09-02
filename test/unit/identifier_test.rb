@@ -33,5 +33,20 @@ class FunctionCallTest < Test::Unit::TestCase
     tree = Parser.parse('$test = "test"')
     assert_identifier(tree)
   end
+  
+  test "should parse identifier with trailing underscores" do
+    tree = Parser.parse('test__ = "test"')
+    assert_identifier(tree)
+  end
+  
+  test "should parse identifier with trailing ?" do
+    tree = Parser.parse('test? = "test"')
+    assert_identifier(tree)
+  end
+  
+  test "should parse identifier with trailing !" do
+    tree = Parser.parse('test! = "test"')
+    assert_identifier(tree)
+  end
 
 end
