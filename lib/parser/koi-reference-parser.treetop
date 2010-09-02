@@ -10,7 +10,7 @@ grammar KoiReferenceParser
   # Program structure
 
   rule block
-    statement+ <Block>
+    (comment / statement)+ <Block>
   end
 
   rule statement
@@ -201,10 +201,24 @@ grammar KoiReferenceParser
   end
   
   ##################
+  # Comments
+  
+  rule comment
+    '#' [^"\n"]* ( "\n" / end_of_file )
+  end
+  
+  ##################
   # Whitespace
   
   rule space
     [\s]+
+  end
+  
+  ##################
+  # End of file
+  
+  rule end_of_file
+    !.
   end
 
 end
